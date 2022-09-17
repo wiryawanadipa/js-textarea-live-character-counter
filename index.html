@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JavaScript TextArea Character Counter by Wiryawan Adipa</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="canonical" href="https://demo.wiryawanadipa.com/js/textarea-char-counter/" />
+	<link rel="stylesheet" href="reset-style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+	<style>
+		body {
+			background-color: #36454f;
+			color: #dedede;
+			font-family: 'Rubik', sans-serif;;
+		}
+
+		.row {
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.box {
+			display: block;
+			width: 100%;
+			max-width: 864px;
+		}
+
+		textarea::-webkit-input-placeholder {
+			color: #888;
+		}
+
+		textarea:-moz-placeholder { /* Firefox 18- */
+			color: #888;  
+		}
+
+		textarea::-moz-placeholder {  /* Firefox 19+ */
+			color: #888;  
+		}
+
+		textarea:-ms-input-placeholder {
+			color: #888;  
+		}
+
+		textarea::placeholder {
+			color: #888;  
+		}
+
+		textarea {
+			background-color: #ffffff;
+			border: 1px solid #5e5e5e;
+			border-radius: .5rem;
+			color: #212529;
+			padding: .5rem;
+			width: 100%;
+		}
+
+		.charcounter {
+			text-align: end;
+		}
+
+		.text-danger {
+			color: #dc3545;
+		}
+
+		.text-warning {
+			color: #ffc107;
+		}
+
+		.text-normal {
+			color: #dedede;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="box">
+				<textarea id="message" placeholder="Please enter your message here." maxlength="100" name="message" rows="6" required></textarea>
+				<div id="messagecharcounter" class="charcounter text-normal">
+					<span id="typedchar">0</span>
+					<span id="maxchar">/ 100</span>
+				</div>
+				<script>
+				const messageElement = document.querySelector("#message");
+				const characterCounterElement = document.querySelector("#messagecharcounter");
+				const typedCharElement = document.querySelector("#typedchar");
+				const maxChar = 100;
+				message.addEventListener("input", event => {
+					const typedChar = message.value.length;
+					if (typedChar > maxChar) {
+						return false;
+					}
+					typedCharElement.textContent = typedChar;
+					if (typedChar > maxChar - 1) {
+						characterCounterElement.classList = "charcounter text-danger";
+					} else if (typedChar < maxChar && typedChar > maxChar * (90 / 100)) {
+						characterCounterElement.classList = "charcounter text-warning";
+					} else if (typedChar < maxChar - ((maxChar * (10 / 100)) - 1)) {
+						characterCounterElement.classList = "charcounter text-normal";
+					}
+				});
+				</script>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
