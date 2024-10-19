@@ -82,16 +82,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="box">
-				<textarea id="message" placeholder="Please enter your message here." maxlength="100" name="message" rows="6" required></textarea>
+				<textarea id="message" placeholder="Please enter your message here." maxlength="1000" name="message" rows="12" required></textarea>
 				<div id="messagecharcounter" class="charcounter text-normal">
 					<span id="typedchar">0</span>
-					<span id="maxchar">/ 100</span>
+					<span id="maxchar">/ 1000</span>
 				</div>
 				<script>
 				const messageElement = document.querySelector("#message");
 				const characterCounterElement = document.querySelector("#messagecharcounter");
 				const typedCharElement = document.querySelector("#typedchar");
-				const maxChar = 100;
+				const maxChar = 1000;
 				messageElement.addEventListener("input", (e) => {
 					const typedChar = messageElement.value.length;
 					if (typedChar > maxChar) {
